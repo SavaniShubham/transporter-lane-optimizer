@@ -1,4 +1,4 @@
-# FreightFox Lane Optimizer
+# Transporter Lane Optimizer
 
 > **Enterprise-grade Transporter Assignment Optimization Engine** for Trade Lanes  
 > Built with **Java 21**, **Spring Boot 3.4.x**, **Spring Data JPA**, **Flyway**, and **PostgreSQL**.
@@ -20,7 +20,7 @@
 
 ## 1. Overview & Core Objectives
 
-FreightFox's freight procurement platform evaluates transporter quotes across multiple trade lanes to identify the most cost-effective and operationally resilient allocations.
+In logistics procurement, platforms evaluate transporter quotes across multiple trade lanes to identify the most cost-effective and operationally resilient allocations.
 
 This service implements a deterministic optimization engine meeting three core requirements:
 1. **Full Lane Coverage**: Every requested trade lane is assigned to exactly one transporter with a valid quote.
