@@ -19,7 +19,7 @@ RUN addgroup -S appgroup && adduser -S appuser -G appgroup
 USER appuser
 
 # Copy built artifact from builder stage
-COPY --from=builder /workspace/target/freightfox-lane-optimizer-*.jar app.jar
+COPY --from=builder /workspace/target/*.jar app.jar
 
 # Environment defaults
 ENV PORT=8080

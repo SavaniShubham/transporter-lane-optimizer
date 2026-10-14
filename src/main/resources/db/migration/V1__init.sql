@@ -1,4 +1,4 @@
--- FreightFox Lane Optimizer Database Schema
+-- Transporter Lane Optimizer Database Schema
 -- Version: V1
 -- Description: Initial schema for lanes, transporters, and lane quotes
 

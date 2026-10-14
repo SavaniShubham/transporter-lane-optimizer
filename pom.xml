@@ -11,11 +11,11 @@
         <relativePath/>
     </parent>
 
-    <groupId>com.freightfox</groupId>
-    <artifactId>freightfox-lane-optimizer</artifactId>
+    <groupId>com.optimizer</groupId>
+    <artifactId>transporter-lane-optimizer</artifactId>
     <version>1.0.0</version>
-    <name>freightfox-lane-optimizer</name>
-    <description>FreightFox Take-Home Assignment: Transporter Assignment on Lanes Optimization Engine</description>
+    <name>transporter-lane-optimizer</name>
+    <description>Transporter Assignment on Lanes Optimization Engine</description>
 
     <properties>
         <java.version>21</java.version>
