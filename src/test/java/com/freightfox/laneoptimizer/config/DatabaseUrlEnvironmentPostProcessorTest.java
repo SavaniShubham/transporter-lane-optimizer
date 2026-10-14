@@ -30,6 +30,25 @@ class DatabaseUrlEnvironmentPostProcessorTest {
     }
 
     @Test
+    @DisplayName("Should convert actual Render PostgreSQL connection string with underscores")
+    void shouldConvertRenderActualUrl() {
+        ConfigurableEnvironment environment = new StandardEnvironment();
+        String renderUrl = "postgresql://freightfox_user:0DgJqn89IwIIVSVJ8bmd1gAJQrmfFKuG@dpg-db7qj2lg1s2s73bghbb0-a/freightfox";
+        System.setProperty("SPRING_DATASOURCE_URL", renderUrl);
+
+        try {
+            DatabaseUrlEnvironmentPostProcessor processor = new DatabaseUrlEnvironmentPostProcessor();
+            processor.postProcessEnvironment(environment, new SpringApplication());
+
+            assertEquals("jdbc:postgresql://dpg-db7qj2lg1s2s73bghbb0-a:5432/freightfox", environment.getProperty("spring.datasource.url"));
+            assertEquals("freightfox_user", environment.getProperty("spring.datasource.username"));
+            assertEquals("0DgJqn89IwIIVSVJ8bmd1gAJQrmfFKuG", environment.getProperty("spring.datasource.password"));
+        } finally {
+            System.clearProperty("SPRING_DATASOURCE_URL");
+        }
+    }
+
+    @Test
     @DisplayName("Should ignore standard jdbc:postgresql URL")
     void shouldIgnoreStandardJdbcUrl() {
         ConfigurableEnvironment environment = new StandardEnvironment();

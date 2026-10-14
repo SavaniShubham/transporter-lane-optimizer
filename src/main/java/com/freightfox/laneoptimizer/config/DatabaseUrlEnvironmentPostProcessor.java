@@ -17,6 +17,12 @@ public class DatabaseUrlEnvironmentPostProcessor implements EnvironmentPostProce
 
     @Override
     public void postProcessEnvironment(ConfigurableEnvironment environment, SpringApplication application) {
+        for (String profile : environment.getActiveProfiles()) {
+            if ("test".equalsIgnoreCase(profile)) {
+                return;
+            }
+        }
+
         String dbUrl = environment.getProperty("SPRING_DATASOURCE_URL");
         if (dbUrl == null || dbUrl.isBlank()) {
             dbUrl = environment.getProperty("DATABASE_URL");
@@ -34,13 +40,16 @@ public class DatabaseUrlEnvironmentPostProcessor implements EnvironmentPostProce
 
                     Map<String, Object> props = new HashMap<>();
                     props.put("spring.datasource.url", jdbcUrl);
+                    props.put("SPRING_DATASOURCE_URL", jdbcUrl);
 
                     String userInfo = uri.getUserInfo();
                     if (userInfo != null && !userInfo.isBlank()) {
                         String[] parts = userInfo.split(":", 2);
                         props.put("spring.datasource.username", parts[0]);
+                        props.put("SPRING_DATASOURCE_USERNAME", parts[0]);
                         if (parts.length > 1) {
                             props.put("spring.datasource.password", parts[1]);
+                            props.put("SPRING_DATASOURCE_PASSWORD", parts[1]);
                         }
                     }
 
