@@ -26,4 +26,12 @@ public class AppConfig {
     public LaneOptimizer laneOptimizer(ExhaustiveStrategy exhaustiveStrategy, LocalSearchStrategy localSearchStrategy) {
         return new LaneOptimizer(exhaustiveStrategy, localSearchStrategy);
     }
+
+    @Bean
+    public org.springframework.boot.autoconfigure.flyway.FlywayMigrationStrategy flywayMigrationStrategy() {
+        return flyway -> {
+            flyway.repair();
+            flyway.migrate();
+        };
+    }
 }
