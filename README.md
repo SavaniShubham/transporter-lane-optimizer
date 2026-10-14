@@ -86,7 +86,7 @@ All calculations have been independently verified through exhaustive enumeration
 
 ### Package Structure
 ```
-com.freightfox.laneoptimizer
+com.laneoptimizer
 ├── domain/          ← Immutable Records & Sealed Outcome Interfaces (Pure Java)
 ├── optimizer/       ← Pure Java Optimizer (Zero Spring imports; 100% unit testable)
 │   ├── QuoteMatrix.java
@@ -159,7 +159,7 @@ http://localhost:8080/swagger-ui.html
 
 ### Running with Local Maven
 ```bash
-cd freightfox-lane-optimizer
+cd transporter-lane-optimizer
 mvn clean spring-boot:run
 ```
 *(By default, uses PostgreSQL if configured, or in-memory H2 if testing).*
@@ -169,8 +169,8 @@ mvn clean spring-boot:run
 docker-compose up --build
 ```
 This boots:
-1. `freightfox-postgres` on port `5432`
-2. `freightfox-lane-optimizer` on port `8080` (with Flyway database migrations automatically applied)
+1. `optimizer-postgres` on port `5432`
+2. `transporter-lane-optimizer` on port `8080` (with Flyway database migrations automatically applied)
 
 ---
 
@@ -261,7 +261,7 @@ curl -X POST http://localhost:8080/api/v1/transporters/assignment \
 
 ### Build Docker Image
 ```bash
-docker build -t freightfox-lane-optimizer:latest .
+docker build -t transporter-lane-optimizer:latest .
 ```
 
 ### Run Container with External PostgreSQL
@@ -270,7 +270,7 @@ docker run -p 8080:8080 \
   -e SPRING_DATASOURCE_URL=jdbc:postgresql://<host>:5432/<dbname> \
   -e SPRING_DATASOURCE_USERNAME=<user> \
   -e SPRING_DATASOURCE_PASSWORD=<password> \
-  freightfox-lane-optimizer:latest
+  transporter-lane-optimizer:latest
 ```
 
 The repository includes `render.yaml` for 1-click infrastructure deployment on Render with managed PostgreSQL.

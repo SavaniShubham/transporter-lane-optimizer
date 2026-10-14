@@ -4,7 +4,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
- * Main Spring Boot entry point for the FreightFox Lane Optimizer service.
+ * Main Spring Boot entry point for the Transporter Lane Optimizer service.
  */
 @SpringBootApplication
 public class LaneOptimizerApplication {
