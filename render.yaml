@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: freightfox-lane-optimizer
+    runtime: docker
+    plan: free
+    dockerfilePath: Dockerfile
+    healthCheckPath: /actuator/health
+    envVars:
+      - key: SPRING_DATASOURCE_URL
+        fromDatabase:
+          name: freightfox-db
+          property: connectionString
+      - key: PORT
+        value: 10000
+
+databases:
+  - name: freightfox-db
+    plan: free
+    databaseName: freightfox
+    user: postgres
