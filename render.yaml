@@ -17,4 +17,4 @@ databases:
   - name: freightfox-db
     plan: free
     databaseName: freightfox
-    user: postgres
+
